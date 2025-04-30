@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO List</title>
+</head>
+<body>
+    <h1 style="text-align: center;">TO-DO List</h1>
+    <form id="todo-form" style="text-align: center;">
+        <input type="text" id="todo-input" placeholder="Enter a new task" required>
+        <br><br>
+        <input type="submit" value="Add Task">
+    </form>
+
+
+</body>
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('todo-form');
+        const input = document.getElementById('todo-input');
+        const todoList = document.createElement('ul');
+        document.body.appendChild(todoList);
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const taskText = input.value.trim();
+            if (taskText) {
+                const listItem = document.createElement('li');
+                listItem.textContent = taskText;
+                todoList.appendChild(listItem);
+                input.value = '';
+            }
+        });
+    });
+</script>
